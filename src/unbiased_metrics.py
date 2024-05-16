@@ -78,7 +78,7 @@ def hr(
                 hr_values.append(max(biased_user_hr, int(np.any(np.random.binomial(1, beta, k)) > 0)))
             mean_hr_values.append(np.mean(hr_values))
         if return_confidence_interval:
-            confidence_interval = st.t.interval(confidence=0.95, df=len(mean_hr_values)-1, loc=np.mean(mean_hr_values), scale=st.sem(mean_hr_values))
+            confidence_interval = st.t.interval(0.95, df=len(mean_hr_values)-1, loc=np.mean(mean_hr_values), scale=st.sem(mean_hr_values))
             return round(np.mean(mean_hr_values), 6), (confidence_interval[1] - confidence_interval[0]) / 2
         else:
             return round(np.mean(mean_hr_values), 6)
@@ -119,7 +119,7 @@ def mrr(
                 mrr_values.append(max(biased_user_mrr, sampled_feedback_user_mrr))            
             mean_mrr_values.append(np.mean(mrr_values))
         if return_confidence_interval:
-            confidence_interval = st.t.interval(confidence=0.95, df=len(mean_mrr_values)-1, loc=np.mean(mean_mrr_values), scale=st.sem(mean_mrr_values))
+            confidence_interval = st.t.interval(0.95, df=len(mean_mrr_values)-1, loc=np.mean(mean_mrr_values), scale=st.sem(mean_mrr_values))
             return round(np.mean(mean_mrr_values), 6), (confidence_interval[1] - confidence_interval[0]) / 2
         else:
             return round(np.mean(mean_mrr_values), 6)
@@ -165,7 +165,7 @@ def ndcg(
                 ndcg_values.append(max(biased_user_ndcg, sampled_feedback_user_ndcg))            
             mean_ndcg_values.append(np.mean(ndcg_values))
         if return_confidence_interval:
-            confidence_interval = st.t.interval(confidence=0.95, df=len(mean_ndcg_values)-1, loc=np.mean(mean_ndcg_values), scale=st.sem(mean_ndcg_values))
+            confidence_interval = st.t.interval(0.95, df=len(mean_ndcg_values)-1, loc=np.mean(mean_ndcg_values), scale=st.sem(mean_ndcg_values))
             return round(np.mean(mean_ndcg_values), 6), (confidence_interval[1] - confidence_interval[0]) / 2
         else:
             return round(np.mean(mean_ndcg_values), 6)
